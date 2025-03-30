@@ -1,0 +1,19 @@
+.header{
+  margin-inline: auto;
+}
+
+.content{
+  display: flex;
+  flex-direction: column;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.label{
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
+.button{
+  cursor: pointer;
+}

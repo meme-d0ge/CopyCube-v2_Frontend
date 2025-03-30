@@ -2,8 +2,9 @@
 import React from "react";
 import '@/app/styles/globals.css'
 import {Provider} from "react-redux";
-import {store} from "@/app/store/store";
+import {persistor, store} from "@/app/store/store";
 import dynamic from "next/dynamic";
+import {PersistGate} from "redux-persist/integration/react";
 
 const NoSSRThemeProvider = dynamic(() => import('@/shared/ui/providers/CustomThemeProvider'), { ssr: false })
 export default function RootLayout({children}: Readonly<{
@@ -12,11 +13,13 @@ export default function RootLayout({children}: Readonly<{
     return (
         <html lang="en">
         <Provider store={store}>
-                <body>
+            <body>
+                <PersistGate loading={null} persistor={persistor}>
                     <NoSSRThemeProvider>
                         {children}
                     </NoSSRThemeProvider>
-                </body>
+                </PersistGate>
+            </body>
         </Provider>
         </html>
     );

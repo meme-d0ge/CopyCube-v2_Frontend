@@ -1,9 +1,11 @@
 @import "tailwindcss";
-
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+body{
+  min-height: 100vh;
+}
 
+@custom-variant dark (&:is(.dark *));
 :root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
