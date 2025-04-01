@@ -4,10 +4,12 @@ import {Label} from "@/shared/ui/label";
 import {Input} from "@/shared/ui/input";
 import {Button} from "@/shared/ui/button";
 import styles from './Register.module.scss'
+import useRegisterForm from "@/features/register/model/useRegisterForm";
 
 const Register = () => {
+    const {register, onSubmit, handleSubmit} = useRegisterForm()
     return (
-        <form>
+        <form onSubmit={handleSubmit(onSubmit)}>
             <Card>
                 <CardHeader>
                     <CardTitle className={styles.header}>Register</CardTitle>
@@ -16,15 +18,15 @@ const Register = () => {
                 <CardContent className={styles.content}>
                     <div>
                         <Label className={styles.label} htmlFor="displayName">Display name</Label>
-                        <Input id='displayName' placeholder={'Display name'}></Input>
+                        <Input {...register('displayName')} id='displayName' placeholder={'Display name'}></Input>
                     </div>
                     <div>
                         <Label className={styles.label} htmlFor="name">Username</Label>
-                        <Input id='username' placeholder={'Username'}></Input>
+                        <Input {...register('username')} id='username' placeholder={'Username'}></Input>
                     </div>
                     <div>
                         <Label className={styles.label} htmlFor="password">Password</Label>
-                        <Input type={'password'} id='password' placeholder={'Password'}></Input>
+                        <Input {...register('password')} type={'password'} id='password' placeholder={'Password'}></Input>
                     </div>
                 </CardContent>
                 <CardFooter>
