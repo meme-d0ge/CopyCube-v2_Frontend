@@ -10,7 +10,17 @@ const UseRegisterForm = () => {
     const [CreateUser] = useCreateUserMutation();
 
     const onSubmit: SubmitHandler<CreateUserData> = async (registerData) => {
-        const customPromise = new Promise((resolve, reject) => {
+        if (!registerData.displayName){
+            toast.warning(`Display name field is required`)
+        }
+        else if (!registerData.username){
+            toast.warning(`Username field is required`)
+        }
+        else if (!registerData.password){
+            toast.warning(`Password field is required`)
+        }
+        else{
+            const customPromise = new Promise((resolve, reject) => {
             CreateUser({
                 displayName: registerData.displayName,
                 username: registerData.username,
@@ -33,11 +43,12 @@ const UseRegisterForm = () => {
                 reject(`${error}`)
             });
         });
-        toast.promise(customPromise, {
-            loading: 'Loading...',
-            success: (result) => `${result}`,
-            error: (error)=> `${error}`,
-        });
+            toast.promise(customPromise, {
+                loading: 'Loading...',
+                success: (result) => `${result}`,
+                error: (error)=> `${error}`,
+            });
+        }
     }
 
     return {
