@@ -12,8 +12,8 @@ const AuthWidget = ({className}: AuthWidgetProps) => {
     return (
         <Tabs className={className} defaultValue='login'>
             <TabsList className={styles['tabs-list']}>
-                <TabsTrigger value="login">Account</TabsTrigger>
-                <TabsTrigger value="register">Password</TabsTrigger>
+                <TabsTrigger value="login">Login</TabsTrigger>
+                <TabsTrigger value="register">Register</TabsTrigger>
             </TabsList>
             <TabsContent value={'login'}>
                 <Login/>
