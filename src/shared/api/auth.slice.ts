@@ -1,10 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {AccessToken} from "@/shared/api/api.interface";
 
-export interface AccessToken {
-    token: string;
-    iat: number;
-    exp: number;
-}
 interface AuthState {
     accessToken: AccessToken | null;
 }

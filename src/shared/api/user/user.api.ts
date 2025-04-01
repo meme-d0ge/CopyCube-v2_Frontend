@@ -1,16 +1,7 @@
 import {api} from "@/shared/api";
 import {apiConfig} from "@/shared/config/api.config";
+import {CreateUserData, DeleteUserData, UpdateUserData} from "@/shared/api/user/user.interface";
 
-
-export interface CreateUserData {
-    username: string;
-    displayName: string;
-    password: string;
-}
-export interface UpdateUserData {
-    password: string;
-    newPassword: string;
-}
 const userApi = api.injectEndpoints({
     endpoints: builder => ({
         createUser: builder.mutation({
@@ -28,7 +19,7 @@ const userApi = api.injectEndpoints({
             })
         }),
         deleteUser: builder.mutation({
-            query: (payload: CreateUserData) => ({
+            query: (payload: DeleteUserData) => ({
                 body: payload,
                 url: apiConfig.deleteUser,
                 method: 'DELETE',

@@ -1,43 +1,12 @@
 import {api} from "@/shared/api";
 import {apiConfig} from "@/shared/config/api.config";
-
-enum PostType{
-    public='public',
-    private='private',
-    link='link',
-}
-interface PaginationData{
-    limit: number;
-    page: number;
-}
-
-interface GetPostData{
-    postId: string
-}
-interface CreatePostData{
-    title: string;
-    body: string;
-    type: PostType;
-}
-interface UpdatePostData{
-    postId: string,
-    body: string,
-    type: PostType,
-}
-interface DeletePostData{
-    postId: string,
-}
-
-interface GetPublicPostsData{
-    pagination: PaginationData
-}
-interface GetPostsByUsernameData{
-    username: string,
-    pagination: PaginationData
-}
-interface GetMyPostsData{
-    pagination: PaginationData
-}
+import {
+    CreatePostData, DeletePostData,
+    GetMyPostsData,
+    GetPostData,
+    GetPostsByUsernameData,
+    GetPublicPostsData, UpdatePostData
+} from "@/shared/api/post/post.interface";
 
 const postApi = api.injectEndpoints({
     endpoints: builder => ({

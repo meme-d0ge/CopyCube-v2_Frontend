@@ -1,9 +1,7 @@
 import {BaseQueryFn, createApi, FetchArgs, fetchBaseQuery, FetchBaseQueryError} from "@reduxjs/toolkit/query/react";
 import {apiConfig} from "@/shared/config/api.config";
 import {AppState} from "@/app/store/store";
-import {AccessToken, addAccessToken, removeAccessToken} from "@/shared/api/auth.slice";
 const API_URL = String(process.env.NEXT_PUBLIC_BASE_URL)
-
 
 const baseQuery = fetchBaseQuery({
     credentials: 'include',
@@ -16,7 +14,6 @@ const baseQuery = fetchBaseQuery({
         return headers;
     },
 })
-
 const baseQueryWithReauth: BaseQueryFn<
     string | FetchArgs,
     unknown,
@@ -26,11 +23,7 @@ const baseQueryWithReauth: BaseQueryFn<
     if (result.error && result.error.status === 401) {
         const refreshResult = await baseQuery(apiConfig.refresh, api, extraOptions);
         if (refreshResult.data) {
-            const accessToken = refreshResult.data as AccessToken;
-            api.dispatch(addAccessToken(accessToken));
             result = await baseQuery(args, api, extraOptions);
-        } else {
-            api.dispatch(removeAccessToken());
         }
     }
 

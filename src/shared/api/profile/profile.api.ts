@@ -1,14 +1,6 @@
 import {api} from "@/shared/api";
 import {apiConfig} from "@/shared/config/api.config";
-
-interface UpdateProfile{
-    avatar: File;
-    displayName: string;
-    description: string;
-}
-interface GetProfileByUsername{
-    username: string;
-}
+import {GetProfileByUsername, UpdateProfile} from "@/shared/api/profile/profile.interface";
 
 const profileApi = api.injectEndpoints({
     endpoints: builder => ({
