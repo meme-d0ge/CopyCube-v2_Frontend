@@ -3,8 +3,8 @@ import React from 'react';
 import Link from "next/link";
 import styles from './Header.module.scss'
 import {useAppSelector} from "@/shared/hooks/useAppSelector";
-import UserProfileCard from "@/features/UserProfileCard";
-import {CardVariant} from "@/features/UserProfileCard/ui/UserProfileCard";
+import HeaderProfileCard from "../components/HeaderProfileCard";
+import {CardVariant} from "@/widgets/Header/components/HeaderProfileCard/ui/HeaderProfileCard";
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -26,7 +26,7 @@ const Header = () => {
                 </div>
                 <div className={`${styles['nav__content']}`}>
                     {accessToken ?
-                        <UserProfileCard variant={CardVariant.outline}/> :
+                        <HeaderProfileCard variant={CardVariant.outline}/> :
                         <div className={styles['nav__link-group']}>
                             <Link className={styles['nav__link']} href={'/auth'}>Login</Link>
                             <Link className={styles['nav__link']} href={'/auth'}>Register</Link>
@@ -48,7 +48,7 @@ const Header = () => {
                             {accessToken ?
                                 <>
                                     <DropdownMenuItem className={`${styles['menu__item']}`}>
-                                        <UserProfileCard/>
+                                        <HeaderProfileCard/>
                                     </DropdownMenuItem>
                                     <DropdownMenuSeparator/>
                                     <DropdownMenuItem className={`${styles['menu__item']}`}>

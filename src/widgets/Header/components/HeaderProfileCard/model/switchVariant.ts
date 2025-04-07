@@ -1,5 +1,5 @@
-import {CardVariant} from "@/features/UserProfileCard/ui/UserProfileCard";
-import styles from '../ui/UserProfileCard.module.scss'
+import {CardVariant} from "@/widgets/Header/components/HeaderProfileCard/ui/HeaderProfileCard";
+import styles from '../ui/HeaderProfileCard.module.scss'
 
 export const switchVariant = (variant: CardVariant) => {
     switch (variant) {

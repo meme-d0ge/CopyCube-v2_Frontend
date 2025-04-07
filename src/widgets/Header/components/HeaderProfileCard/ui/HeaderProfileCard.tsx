@@ -3,9 +3,9 @@ import React from 'react';
 import {useGetProfileQuery} from "@/shared/api";
 import {Avatar, AvatarFallback, AvatarImage} from "@/shared/ui/avatar";
 import {Skeleton} from "@/shared/ui/skeleton";
-import styles from './UserProfileCard.module.scss'
+import styles from './HeaderProfileCard.module.scss'
 import Link from "next/link";
-import {switchVariant} from "@/features/UserProfileCard/model/switchVariant";
+import {switchVariant} from "@/widgets/Header/components/HeaderProfileCard/model/switchVariant";
 
 export enum CardVariant {
     default = '',
@@ -14,7 +14,7 @@ export enum CardVariant {
 interface UserProfileCardProps {
     variant?: CardVariant;
 }
-const UserProfileCard = ({variant = CardVariant.default}: UserProfileCardProps) => {
+const HeaderProfileCard = ({variant = CardVariant.default}: UserProfileCardProps) => {
     const {isError, isLoading, data} = useGetProfileQuery('')
 
     if (isLoading) {
@@ -49,4 +49,4 @@ const UserProfileCard = ({variant = CardVariant.default}: UserProfileCardProps) 
     }
 };
 
-export default UserProfileCard;
+export default HeaderProfileCard;
