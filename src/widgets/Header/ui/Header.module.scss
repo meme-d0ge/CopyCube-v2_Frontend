@@ -1,0 +1,95 @@
+@use '@/app/styles/media' as media;
+.nav{
+  display: flex;
+  max-width: 1024px;
+  min-height: 60px;
+  padding-block: 7.5px;
+  padding-inline: 10px;
+  align-items: center;
+  margin-inline: auto;
+  justify-content: space-between;
+  @include media.mobile-s{
+    padding-inline: 2.5px;
+  }
+  @include media.mobile{
+    justify-content: flex-end;
+    padding-block: 20px;
+  }
+
+  &__link-group{
+    display: flex;
+    column-gap: 16px;
+  }
+  &__link{
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+  &__content{
+    @include media.mobile {
+      display: none;
+    }
+  }
+}
+.menu {
+  @include media.mobile-above {
+    display: none;
+    position: absolute;
+  }
+  display: flex;
+  align-items: center;
+
+  &__trigger {
+    position: relative;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+
+      height: 4px;
+      background: var(--card-foreground);
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      left: 0;
+      width: 100%;
+
+      height: 4px;
+      background: var(--card-foreground);
+      box-shadow: 0 8px 0 var(--card-foreground);
+    }
+  }
+
+  &__content {
+    min-width: 200px;
+    padding: 10px;
+    margin-right: 25px;
+    margin-top: 10px;
+  }
+
+  &__item {
+    cursor: pointer;
+    padding: 0;
+
+    & > * {
+      width: 100%;
+      padding: 5px;
+      justify-content: normal;
+      cursor: pointer;
+    }
+  }
+
+  &__link {
+    display: flex;
+    column-gap: 10px;
+  }
+}
