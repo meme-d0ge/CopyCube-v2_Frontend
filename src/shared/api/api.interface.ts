@@ -9,6 +9,6 @@ export interface AccessToken {
 }
 export interface ErrorApi {
     message: string,
-    error: string,
+    error: string | undefined,
     statusCode: number
 }
